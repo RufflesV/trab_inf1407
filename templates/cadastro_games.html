@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<style>
+
+body {
+    background-color: #AC5AFE;
+    background-size: cover;
+}
+.box {
+    height: 500px;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+    border: 3px solid black;
+}
+.button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Informe seus jogos!</title>
+</head>
+<body>
+     <div>
+        <h2 style="text-align: center;color: orange; font-family: Arial"> Informe seu jogo</h2>
+    </div>
+
+    <div class="box">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Registrar jogo</button>
+        </form>
+        <br>
+        <a href="/inicio/{{ user.id }}" class="button">Ir para tela de inicio!</a>
+    </div>
+</body>
+</html>

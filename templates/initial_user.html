@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body {
+        background-color: #AC5AFE;
+        background-size: cover;
+    }
+    ul {
+        list-style: none;
+        overflow: hidden;
+}
+    li {
+        margin: 1px;
+        background-color: lightblue;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+    }
+    #right {
+        float: right;
+    }
+     #left {
+        float: right;
+    }
+    #odd {
+            background-color: grey;
+        }
+    #even {
+            background-color: orange;
+    }
+    .user_info {
+        justify-content: left;
+        text-align: left;
+        width: 20%;
+        height: 100px;
+        border: 3px solid black;
+    }
+    .button {
+            display: inline-block;
+            margin: 5px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>My Games</title>
+</head>
+<body>
+    <div class="user_info">
+        <h4>☰ Name:{{ user.name }}   Age:{{ user.age }}</h4>
+        <a href="/update/{{ user.id }}" class="button">Editar</a>
+        <a href="/delete/{{ user.id }}" class="button">Deletar</a>
+        <a href="/cadastro/game/{{ user.id }}" class="button">Add Game</a>
+    </div>
+    <h1 style="text-align:center">Seus Jogos:</h1>
+
+    <ul style="text-align:center; color: white; font-family:Arial">
+        {% for game in user_games %}
+            <li>Jogo: {{ game.name }} <a href="remove_list/{{ user.id }}/{{ game.name }}" class="button" id="right">Remove</a></li>
+            <li>Dev: {{  game.developer }}</li>
+            <br>
+        {%  endfor %}
+    </ul>
+    <br>
+    <h1 style="text-align:center">All Games:</h1>
+    <ul style="text-align:center; color: grey; font-family:Arial">
+        {% for game in all_games %}
+            {% if game not in user_games %}
+                <li id="{% cycle 'odd' 'even' %}">Jogo: {{ game.name }}<a href="add/{{ user.id }}/{{ game.name }}" class="button" id="right">+ library</a> <a href="delete_game/{{ user.id }}/{{ game.name }}" class="button" id="left">Delete</a></li>
+                <li id="{% cycle 'odd' 'even' %}">Dev: {{  game.developer }}</li>
+
+            {% endif %}
+        {%  endfor %}
+    </ul>
+
+
+
+
+
+</body>
+</html>

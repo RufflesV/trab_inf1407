@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<style>
+    body {
+    background-color: #AC5AFE;
+    background-size: cover;
+}
+    .box {
+    height: 500px;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+    border: 3px solid black;
+}
+    .login_button {
+        justify-content: center;
+        text-align: center;
+        width: 20%;
+        height: 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
+
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <div>
+        <h2 style="text-align: center;color: orange; font-family: Arial"> Login! </h2>
+    </div>
+
+    <div class="box">
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            <br>
+            <br>
+            <input type="submit" class="login_button" value="Login">
+
+        </form>
+    </div>
+</body>
+</html>
